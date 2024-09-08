@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float gravityValue = -9.81f;
     private Vector3 velocity;
+    private AudioSource footclip;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
         Cursor.visible = false; // Hide the cursor
+        footclip = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,7 +67,19 @@ public class PlayerController : MonoBehaviour
         // Calculate the movement direction based on the input and camera direction
         Vector3 moveDirection = transform.forward  * moveZ + transform.right * moveX; 
         characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
-        
+
+        if ((moveX != 0 || moveZ != 0) && IsGrounded())
+        {
+            if (!footclip.isPlaying) // Check if footstep audio is not already playing
+            {
+                footclip.Play(); // Play footstep sound
+            }
+        }
+        else
+        {
+            footclip.Stop(); // Stop footstep sound if not moving
+        }
+
     }
 
     void Jump()

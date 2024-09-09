@@ -25,6 +25,8 @@ public class ColliderInteractable : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 popup.SetActive(!popup.activeSelf);
+                if (!sound.isPlaying)
+                    sound.Play();
             }
         }
     }
@@ -34,14 +36,6 @@ public class ColliderInteractable : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             text.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                popup.SetActive(!popup.activeSelf);
-                if (sound != null && !sound.isPlaying)
-                {
-                    sound.Play();
-                }
-            }
         }
         
     }

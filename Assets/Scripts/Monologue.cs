@@ -34,7 +34,10 @@ public class Monologue : MonoBehaviour
         {
             text.SetActive(false);
         }
-        StartCoroutine(SensesText());
+        if (text2 != null)
+        {
+            StartCoroutine(SensesText());
+        }
     }
 
     IEnumerator SensesText()

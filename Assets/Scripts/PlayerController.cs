@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float gravityValue = -9.81f;
     private Vector3 velocity;
-    private AudioSource footclip;
+    public AudioSource footclip;
 
     // Start is called before the first frame update
     void Start()

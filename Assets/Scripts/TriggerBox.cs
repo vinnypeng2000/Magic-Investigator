@@ -6,11 +6,13 @@ public class TriggerBox : MonoBehaviour
     public GameObject text;
     public GameObject button;
     public GameObject text2;
+    private int availiableCount;
 
     private bool trigger;
     void Start()
     {
         trigger = false;
+        availiableCount = 1;
     }
 
     // Update is called once per frame
@@ -48,7 +50,12 @@ public class TriggerBox : MonoBehaviour
 
             if (text2 != null)
             {
-                StartCoroutine(SensesText());
+                
+                if(availiableCount == 1)
+                {
+                    availiableCount = 0;
+                    StartCoroutine(SensesText());
+                }
             }
         }
 

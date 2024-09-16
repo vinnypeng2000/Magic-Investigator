@@ -3,8 +3,8 @@ using System.Collections;
 
 public class TriggerBox : MonoBehaviour
 {
-    public GameObject text;
     public GameObject button;
+    public GameObject text;
     public GameObject text2;
     private int availiableCount;
 
@@ -13,6 +13,11 @@ public class TriggerBox : MonoBehaviour
     {
         trigger = false;
         availiableCount = 1;
+
+        if (text2 != null)
+        {
+            // Safe to use text2
+        }
     }
 
     // Update is called once per frame

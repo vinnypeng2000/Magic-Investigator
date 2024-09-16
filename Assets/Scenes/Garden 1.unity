@@ -11205,8 +11205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065080f79e28d44f691516c1d5ab3983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 246390800}
   button: {fileID: 1198077478}
+  text: {fileID: 246390800}
   text2: {fileID: 2091854794}
 --- !u!65 &1780915739
 BoxCollider:

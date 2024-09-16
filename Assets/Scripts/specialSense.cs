@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class specialSense : MonoBehaviour
 {
     // Start is called before the first frame update
     public LayerMask normalVisionMask;
     public LayerMask senseSkillMask;
-    bool senseSkillOn = false;
+    public PostProcessVolume PostProcessVolume;
+    public bool senseSkillOn = false;
     void Start()
     {
         Camera.main.cullingMask = normalVisionMask;
@@ -18,15 +20,21 @@ public class specialSense : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            if (!senseSkillOn)
+            {
+                Camera.main.cullingMask = senseSkillMask;
+                senseSkillOn =!senseSkillOn;
+                PostProcessVolume.enabled = true;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
             if (senseSkillOn)
             {
                 Camera.main.cullingMask = normalVisionMask;
-                senseSkillOn =!senseSkillOn;
-            }
-            else
-            {
-                Camera.main.cullingMask = senseSkillMask;
                 senseSkillOn = !senseSkillOn;
+                PostProcessVolume.enabled = false;
             }
         }
     }

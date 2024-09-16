@@ -19,7 +19,7 @@ public class ClueActiveControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("ClueDetect")) {
             if (other.GetComponent<specialSense>().senseSkillOn)
             {
                 ThisParticle.Play();
@@ -29,7 +29,7 @@ public class ClueActiveControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("ClueDetect"))
         {
             ThisParticle.Stop();
             

@@ -6,6 +6,8 @@ public class ClueActiveControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public ParticleSystem ThisParticle;
+    public bool ParticleActive = false;
+
     void Start()
     {
         
@@ -14,7 +16,15 @@ public class ClueActiveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ThisParticle.isPlaying){
+            if(!ParticleActive){
+                ThisParticle.Stop();
+            }
+        }else{
+            if(ParticleActive){
+                ThisParticle.Play();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +33,7 @@ public class ClueActiveControl : MonoBehaviour
             if (other.GetComponent<specialSense>().senseSkillOn)
             {
                 ThisParticle.Play();
+                ParticleActive = true;
             }
         }
     }
@@ -32,6 +43,7 @@ public class ClueActiveControl : MonoBehaviour
         if (other.CompareTag("ClueDetect"))
         {
             ThisParticle.Stop();
+            ParticleActive = false;
             
         }
     }

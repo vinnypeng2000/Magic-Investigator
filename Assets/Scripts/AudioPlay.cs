@@ -39,7 +39,7 @@ public class AudioPlay : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             button.SetActive(false);
-
+            trigger = false;
         }
     }
 }

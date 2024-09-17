@@ -24,8 +24,12 @@ public class NewBehaviourScript : MonoBehaviour
         if (!clueSwitched)
         {
             clueSwitched=true;
-            PreviousClue.SetActive(false);
-            NextClue.SetActive(true);
+            if(PreviousClue){
+                PreviousClue.SetActive(false);
+            }
+            if(NextClue){
+                NextClue.SetActive(true);
+            }
         }
     }
 }

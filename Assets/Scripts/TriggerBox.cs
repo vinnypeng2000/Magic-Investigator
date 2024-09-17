@@ -7,6 +7,9 @@ public class TriggerBox : MonoBehaviour
     public GameObject text;
     public GameObject text2;
     private int availiableCount;
+    public GameObject PreviousClue;
+    public GameObject NextClue;
+    public bool clueSwitched = false;
 
     private bool trigger;
     void Start()
@@ -28,6 +31,17 @@ public class TriggerBox : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 text.SetActive(!text.activeSelf);
+                    
+                if (!clueSwitched)
+                {
+                    clueSwitched=true;
+                    if(PreviousClue){
+                        PreviousClue.SetActive(false);
+                    }
+                    if(NextClue){
+                        NextClue.SetActive(true);
+                    }
+                }
             }
         }
     }
